@@ -1,0 +1,13 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  userName  String   @db.VarChar(255)
+  daysRemaining Int 
+  totalDays Int
+  daysTaken Int
+}
+
