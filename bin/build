@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sass --load-path=./ --quiet-deps --no-source-map client/sass/application.scss public/stylesheets/application.css
