@@ -4,7 +4,7 @@ const router = express.Router();
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
-async function main() {
+const createData = async () => {
   await prisma.holidayTracker.create({
     data: {
       name: 'A User',
@@ -13,26 +13,41 @@ async function main() {
       daysRemaining: 9
     },
   })
+}
 
+const getData = async () => {
   const holidayData = await prisma.holidayTracker.findMany()
   console.dir(holidayData, { depth: null })
 }
 
 
 
-
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  main()
-  .then(async () => {
+router.get('/', async function(req, res, next) {
+  
+  try {
+    await createData()
+    await getData()
     await prisma.$disconnect()
-  })
-  .catch(async (e) => {
+    res.send('success')
+  } 
+  catch (err) {
     console.error(e)
     await prisma.$disconnect()
     process.exit(1)
-  })
-  res.send('respond with a resource');
+    res.send('error')
+  }
+  
+  
+  
+  // main()
+  // .then(async () => {
+  // })
+  // .catch(async (e) => {
+  //   console.error(e)
+  //   await prisma.$disconnect()
+  //   process.exit(1)
+  // })
 });
 
 module.exports = router;
