@@ -1,30 +1,21 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
 async function main() {
-  await prisma.user.create({
+  await prisma.holidayTracker.create({
     data: {
-      name: 'Alice',
-      email: 'alice@prisma.io',
-      posts: {
-        create: { title: 'Hello World' },
-      },
-      profile: {
-        create: { bio: 'I like turtles' },
-      },
+      name: 'A User',
+      totalDays: 10,
+      daysUsed: 1,
+      daysRemaining: 9
     },
   })
 
-  const allUsers = await prisma.user.findMany({
-    include: {
-      posts: true,
-      profile: true,
-    },
-  })
-  console.dir(allUsers, { depth: null })
+  const holidayData = await prisma.holidayTracker.findMany()
+  console.dir(holidayData, { depth: null })
 }
 
 
