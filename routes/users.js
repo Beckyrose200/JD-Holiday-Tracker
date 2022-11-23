@@ -32,10 +32,10 @@ router.get('/', async function(req, res, next) {
     res.send('success')
   } 
   catch (err) {
-    console.error(e)
+    res.send(`error ${err}`)
+    console.error(err)
     await prisma.$disconnect()
     process.exit(1)
-    res.send('error')
   }
   
   
