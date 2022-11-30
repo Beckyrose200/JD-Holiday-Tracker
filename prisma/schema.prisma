@@ -1,0 +1,20 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Binary Targets:
+//    * darwin: Mac OS x86 (Intel based)
+//    * darwin-arm64: Mac OS x86 (Apple Silicon, M1, etc.)
+//    * debian-openssl-3.0.x: Ubuntu 22.04
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["darwin", "darwin-arm64", "debian-openssl-3.0.x"]
+}
+model holidayTracker {
+  id      Int      @id @default(autoincrement())
+  name   String   
+  totalDays Int
+  daysUsed Int
+  daysRemaining Int
+}
