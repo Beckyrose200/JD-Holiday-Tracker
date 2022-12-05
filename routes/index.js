@@ -15,13 +15,13 @@ router.get('/', async function(req, res, next) {
 router.post('/', async function(req, res, next) {
   const startDate = new Date(
     req.body['start-date-year'],
-    req.body['start-date-month'],
+    req.body['start-date-month'] - 1,
     req.body['start-date-day']
   );
 
   const endDate = new Date(
     req.body['end-date-year'],
-    req.body['end-date-month'],
+    req.body['end-date-month'] - 1,
     req.body['end-date-day']
   );
 
