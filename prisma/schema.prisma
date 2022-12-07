@@ -13,8 +13,6 @@ generator client {
 }
 model holidayTracker {
   id      Int      @id @default(autoincrement())
-  name   String   
-  totalDays Int
-  daysUsed Int
-  daysRemaining Int
+  startDate DateTime
+  endDate DateTime
 }

@@ -1,14 +1,20 @@
 let express = require('express');
 let router = express.Router();
+const createNewHoliday = require('../db/create-new-holiday')
+const getAllHolidays = require('../db/get-all-holidays')
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
+  const holidayData = await getAllHolidays()
+
   let data = {
     message: 'Hello World! Gov Uk styling all working',
     layout: 'layout.njk',
-    title: 'Nunjucks example'
+    title: 'Nunjucks example',
+    holidayData
   }
 
+  console.log(holidayData)
   res.render('index.njk', data)
 })
 
@@ -25,11 +31,7 @@ router.post('/', async function(req, res, next) {
     req.body['end-date-day']
   );
 
-  const holiday = {
-    startDate,
-    endDate
-  }
-
+  await createNewHoliday(startDate, endDate)
   // TODO: Save holiday object into db
   //       Pass db object GUID to confirmation page
 
