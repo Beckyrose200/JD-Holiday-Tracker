@@ -6,48 +6,49 @@
 {% block  content %}
 
 <h1 class="govuk-heading-l">Enter your holiday start date and end date</h1>
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-one-half">
-    {{ govukDateInput({
-      id: "start-date",
-      namePrefix: "start-date",
-      fieldset: {
-        legend: {
-          text: "Start Date"
-        }
-      },
-    hint: {
-      text: "For example, 27 03 2023"
-    }
-      })
-    }}
+<form method="post">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+      {{ govukDateInput({
+        id: "start-date",
+        namePrefix: "start-date",
+        fieldset: {
+          legend: {
+            text: "Start Date"
+          }
+        },
+      hint: {
+        text: "For example, 27 03 2023"
+      }
+        })
+      }}
+    </div>
+    <div class="govuk-grid-column-one-half">
+      {{ govukDateInput({
+        id: "end-date",
+        namePrefix: "end-date",
+        fieldset: {
+          legend: {
+            text: "End Date"
+          }
+        },
+      hint: {
+        text: "For example, 01 04 2023"
+      }
+        })
+      }}
+    </div>
   </div>
-  <div class="govuk-grid-column-one-half">
-    {{ govukDateInput({
-      id: "end-date",
-      namePrefix: "end-date",
-      fieldset: {
-        legend: {
-          text: "End Date"
-        }
-      },
-    hint: {
-      text: "For example, 01 04 2023"
-    }
-      })
-    }}
-  </div>
-</div>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    {{ govukButton({
-      text: "Submit"
-      })
-    }}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      {{ govukButton({
+        text: "Submit"
+        })
+      }}
+    </div>
   </div>
-</div>
-
+</form>
 {{ govukTable({
   caption: "Holiday Requests",
   captionClasses: "govuk-table__caption--m",
