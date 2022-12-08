@@ -49,6 +49,7 @@
     </div>
   </div>
 </form>
+{% if holidays|length %}
 {{ govukTable({
   caption: "Holiday Requests",
   captionClasses: "govuk-table__caption--m",
@@ -64,30 +65,8 @@
       text : "Total Days"
     }
   ],
-  rows: [
-    [
-      {
-        text: "01/02/2022"
-      },
-      {
-        text: "03/02/2022"
-      },
-      {
-        text: "3 Days"
-      }
-    ],
-    [
-      {
-        text: "15/10/2023"
-      },
-      {
-        text: "20/10/2023"
-      },
-      {
-        text: "5 Days"
-      }
-    ]
-  ]
+  rows: holidays
 }) }}
+{% endif %}
 
 {% endblock %}

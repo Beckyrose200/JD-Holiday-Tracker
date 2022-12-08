@@ -2,20 +2,42 @@ let express = require('express')
 let router = express.Router()
 const dayjs = require('dayjs')
 const objectSupport = require("dayjs/plugin/objectSupport")
+dayjs.extend(objectSupport)
 const createNewHoliday = require('../db/create-new-holiday')
 const getAllHolidays = require('../db/get-all-holidays')
 
-dayjs.extend(objectSupport)
-
 /* GET home page. */
 router.get('/', async function(req, res, next) {
+  const holidayTable = []
   const holidayData = await getAllHolidays()
+  const dateFormat = 'DD/MM/YYYY'
+
+  if (holidayData != undefined) {
+    holidayData.forEach(holiday => {
+      const startDate = dayjs(holiday.startDate)
+      const endDate = dayjs(holiday.endDate)
+
+      var projection = [
+          {
+            text: startDate.format(dateFormat)
+          },
+          {
+            text: endDate.format(dateFormat)
+          },
+          {
+            text: endDate.diff(startDate, 'day') + 1
+          }
+        ]
+      
+        holidayTable.push(projection)
+    })
+  }
 
   let data = {
     message: 'Hello World! Gov Uk styling all working',
     layout: 'layout.njk',
     title: 'Nunjucks example',
-    holidayData
+    holidays: holidayTable
   }
 
   console.log(holidayData)
