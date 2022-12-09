@@ -8,3 +8,8 @@
 * Simon Dunn
 * Holly Adamson
 * James Poprawski
+
+## Prerequisites
+
+
+## Starting the app
