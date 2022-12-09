@@ -11,16 +11,18 @@
 
 ## Prerequisites
 ### Database
-Requires access to a local or cloud Postgres database.
+Requires access to the cloud Postgres database.
 
-To connect to the database create a `.env` file in the root folder, use the `.exampleenv` as a template and set the variable `DATABASE_URL` to equal the connection string for your database. 
-eg: DATABASE_URL="your-connection-string-here"
+To connect to the database create a `.env` file in the root folder, use the `.exampleenv` as a template and set the variable `DATABASE_URL` and `SHADOW_DATABASE_URL` to equal the connection strings for your database. 
+eg:  
+DATABASE_URL="your-connection-string-here"
+SHADOW_DATABASE_URL="your-connection-string-here"  
 
-For local development recomend using Docker however we have a cloud based database available for those without Docker installed, ask in the chat for the connection string. 
+Ask in the chat for the connection strings. 
 
 
 ## Start the app
-1. Set connection string for database
+1. Set connection strings for database
 2. If using a new instance of database then run  migration command to setup tables `npx prisma migrate deploy`. If using the cloud database the tables will already be setup and this step is not required. 
 3. Start the application with `npm start`
 4. App is running on localhost:3000
