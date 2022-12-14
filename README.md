@@ -10,6 +10,8 @@
 
 
 ## Prerequisites
+### Runtimes
+* Node V18.12.1 LTS
 ### Database
 Requires access to the cloud Postgres database.
 

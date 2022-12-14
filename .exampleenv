@@ -1,3 +1,3 @@
 // change the connection strings below and rename file as '.env'
 DATABASE_URL="your-connection-string-here"
-SHADOW_DATABASE_URL="your-connection-string-here"  
+SHADOW_DATABASE_URL="your-connection-string-here"
