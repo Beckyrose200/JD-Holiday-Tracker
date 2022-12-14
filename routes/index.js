@@ -17,7 +17,7 @@ router.get('/', async function(req, res, next) {
       const startDate = dayjs(holiday.startDate)
       const endDate = dayjs(holiday.endDate)
 
-      var projection = [
+      const projection = [
           {
             text: startDate.format(dateFormat)
           },
