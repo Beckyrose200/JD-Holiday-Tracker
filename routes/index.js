@@ -33,14 +33,13 @@ router.get('/', async function(req, res, next) {
     })
   }
 
-  let data = {
+  const data = {
     message: 'Hello World! Gov Uk styling all working',
     layout: 'layout.njk',
     title: 'Nunjucks example',
     holidays: holidayTable
   }
 
-  console.log(holidayData)
   res.render('index.njk', data)
 })
 
