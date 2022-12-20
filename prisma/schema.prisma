@@ -1,6 +1,7 @@
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 // Binary Targets:
@@ -13,8 +14,6 @@ generator client {
 }
 model holidayTracker {
   id      Int      @id @default(autoincrement())
-  name   String   
-  totalDays Int
-  daysUsed Int
-  daysRemaining Int
+  startDate DateTime
+  endDate DateTime
 }
